@@ -1,0 +1,12 @@
+class CreateEntries < ActiveRecord::Migration[6.0]
+  def change
+    create_table :entries do |t|
+      t.string :task
+      t.string :kind
+      t.boolean :complete, default: false
+      t.references :user, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end

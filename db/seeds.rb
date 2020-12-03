@@ -9,22 +9,26 @@ User.destroy_all
 Entry.destroy_all
 
 users = [
-    {name: "Rodrigo Rojas", password: "1234"}
-    {name: "Hannah Rickard", password: "1234"}
-    {name: "Maria Mena", password: "1234"}
-    {name: "Ed Donelly", password: "1234"}
-    {name: "Jean Pierre Sachs", password: "1234"}
+    {name: "Rodrigo Rojas", password_digest: "1234"},
+    {name: "Hannah Rickard", password_digest: "1234"},
+    {name: "Maria Mena", password_digest: "1234"},
+    {name: "Ed Donelly", password_digest: "1234"},
+    {name: "Jean Pierre Sachs", password_digest: "1234"}
 ]
 
+users.each {|user| User.create(user)}
+
 entries = [
-    {task: "Birthday party.", kind: "Event", complete: false}
-    {task: "Write blog post.", kind: "Task", complete: false}
-    {task: "Get house ready for party.", kind: "Task", complete: false}
-    {task: "Schedule call with Katie.", kind: "Task", complete: false}
-    {task: "Publish new recipe post.", kind: "Task", complete: false}
-    {task: "Appointment with Dr. Brown.", kind: "Event", complete: false}
-    {task: "I need to start my xmas shopping.", kind: "Notes", complete: false}
-    {task: "Remember to reschedule meeting with Katie.", kind: "Notes", complete: false}
-    {task: "Thanksgiving dinner.", kind: "Event", complete: false}
-    {task: "Check on the order status of my prints.", kind: "Notes", complete: false}
+    {task: "Birthday party.", kind: "Event", complete: false, user: User.all.sample},
+    {task: "Write blog post.", kind: "Task", complete: false, user: User.all.sample},
+    {task: "Get house ready for party.", kind: "Task", complete: false, user: User.all.sample},
+    {task: "Schedule call with Katie.", kind: "Task", complete: false, user: User.all.sample},
+    {task: "Publish new recipe post.", kind: "Task", complete: false, user: User.all.sample},
+    {task: "Appointment with Dr. Brown.", kind: "Event", complete: false, user: User.all.sample},
+    {task: "I need to start my xmas shopping.", kind: "Notes", complete: false, user: User.all.sample},
+    {task: "Remember to reschedule meeting with Katie.", kind: "Notes", complete: false, user: User.all.sample},
+    {task: "Thanksgiving dinner.", kind: "Event", complete: false, user: User.all.sample},
+    {task: "Check on the order status of my prints.", kind: "Notes", complete: false, user: User.all.sample}
 ]
+
+entries.each {|task| Entry.create(task)}

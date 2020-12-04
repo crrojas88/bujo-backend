@@ -10,11 +10,13 @@ class EntriesController < ApplicationController
     end
 
     def update
-
+        entry = Entry.find(params[:id])
+        entry.update(task: params[:entry][:task])
+        render json: entry
     end
 
     def destroy
-
+        
     end
-    
+
 end

@@ -6,7 +6,9 @@ class EntriesController < ApplicationController
     end
 
     def create
-
+    # byebug
+        entry = Entry.create(task: params[:task], user_id: params[:user])
+        render json: entry
     end
 
     def update
@@ -16,7 +18,9 @@ class EntriesController < ApplicationController
     end
 
     def destroy
-        
+        entry = Entry.find(params[:id])
+        entry.destroy
+        render json: entry
     end
 
 end
